@@ -1,30 +1,27 @@
-# The Oath of the Last Survivors: Chapter 1 slice
+# The Oath of the Last Survivors: Act I
 
-A playable vertical slice built in Godot 4.3 (GDScript, landscape, Android-first).
+A narrative JRPG built in Godot 4.3 (GDScript, portrait, Android-first).
+All characters, beasts, maps, cutscene drawings and UI are made in code, so there are no image assets to manage.
 
-## What's in this slice
-- **Title**, then an **opening cutscene** in a Leonardo da Vinci notebook style (the drawings ink themselves in).
-- **Hero naming**: Mark, Jhona, Nelson, and Rachel are the defaults, and the player can rename them.
-- **Tunnel battle** against Raiders, a Brute, and Sgt. Kess:
-  - A turn-order timeline (the next 8 turns are shown).
-  - Timed actions: tap when the ring meets the circle for bonus damage or a parry. Auto timing is available as a toggle.
-  - **Intercept**: when a low-HP ally is attacked, Mark can leap in.
-  - **Morale and Break**: break an enemy's will for double damage. Broken raiders may surrender.
-  - **Shared Vow Shield** and **Resonance Gauge**, which unlocks six pair **Chain Arts**.
-- **The First Fire**: the Oath cutscene blooms into colour.
-- **Camp**: the Bond Tether, plus three sibling bond talks. Bonds strengthen Chain Arts.
+## What's playable
+- **Chapter 1: The Lantern Night.** The festival in Hollowmere, then the Syndicate raid. Find and name the four heroes, take Brannoc's shield, and escape the drainage tunnels past Sgt. Kess.
+- **Chapter 2: The First Fire.** The Oath scene, then your first camp.
+- **Chapter 3: The Reach.** An open wild area with roaming enemies, camps, caches, Rook's ambush and the Wandering Bazaar (Tamsin's shop). The optional Ashwolf Alpha in the north woods can be tamed.
 
-## Build the APK with GitHub (no PC tools needed)
-1. Create a new GitHub repo (for example `oath-of-the-last-survivors`) and upload every file from this folder.
-   - If the `.github` folder doesn't upload, go to **Add file → Create new file** and name the file
-     `.github/workflows/build-apk.yml`, then paste in its contents.
-2. Open the **Actions** tab. The "Build Android APK" job runs on every push. You can also run it with **Run workflow**.
-3. When it turns green, open the run and download **oath-of-the-last-survivors-apk**. Unzip it and install the APK on your phone. You'll need to allow installs from unknown sources.
+## Systems
+- Tap to walk. The party follows the leader. Enemies are visible on the map: touch them from behind for a first strike. Weak groups are auto-won.
+- Battles use a turn timeline (next 8 turns), timed hits and parries (or Auto timing), Mark's intercept prompt, morale and Break, the shared Vow Shield, the Resonance Gauge with all six Chain Arts, and the Ashwolf call once tamed.
+- Camp gives 3 evening actions: bond talks (12 sibling vignettes that strengthen Chain Arts) or cooking (3-battle buffs). Resting heals and saves.
+- Cutscenes are Leonardo-style notebook pages that ink themselves in, with mirror-written margin notes.
+- Autosave on area change and after battles. Settings: timing, battle speed, story marker.
 
-You can also open the folder in the Godot 4.3 editor (desktop or the Android editor app) and press Play.
+## Build the APK with GitHub
+1. Upload every file in this folder to the top level of your repo (`project.godot` must sit at the top, next to `scripts`).
+2. If `.github/workflows/build-apk.yml` didn't upload, create it with **Add file → Create new file** and paste its contents.
+3. Open **Actions** and run "Build Android APK". Download `oath-of-the-last-survivors-apk` when it turns green.
 
-## Project layout
-- `scripts/main.gd`: the scene flow and all cutscene text.
-- `scripts/battle.gd`: the battle system (stats, skills, Chain Arts, and enemies are all near the top).
-- `scripts/sketches.gd`: the procedural Da Vinci-style drawings. Swap these for painted art later.
-- `scripts/camp.gd`: the camp, tether, and bond talks.
+## Where to edit
+- `scripts/data.gd`: heroes, skills, Chain Arts, enemies, items, quest text and bond talks.
+- `scripts/main.gd`: the Act I story script, map contents and encounters.
+- `scripts/battle.gd`: the battle system.
+- `scripts/maps.gd`: map layouts. `scripts/art.gd`: character art. `scripts/cutscene.gd`: notebook pages.
